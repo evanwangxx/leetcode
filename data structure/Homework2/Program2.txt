@@ -1,0 +1,5 @@
+Program2.txt 
+
+Since Push is get the first element from stack-1, then the running time for push is O(1). 
+
+When we do not have any elements in stack-2, the running time is O(n) since the loop needs to pop all elemnts to stack-2. However, when we have at least one element in stack-2, the running time is O(1) because we just need to pop the first element in stack-2.

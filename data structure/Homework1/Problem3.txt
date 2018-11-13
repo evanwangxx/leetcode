@@ -1,0 +1,68 @@
+ For the first loop: 
+when N = 10000, it costs 2 time
+when N = 20000, it costs 5 time
+when N = 30000, it costs 7 time
+when N = 40000, it costs 10 time
+when N = 50000, it costs 13 time
+when N = 60000, it costs 14 time
+when N = 70000, it costs 18 time
+when N = 80000, it costs 21 time
+when N = 90000, it costs 24 time
+when N = 100000, it costs 23 time
+
+We can see as N increases t times, the running time also increases t times (almost):
+From 10000 to 20000, running time increases from 2 to 5, which is almost 2 times.
+From 20000 to 40000, running time increases from 5 to 10, which is exactly 2 times.
+From 40000 to 80000, running time increases from 10 to 21, which is almost 2 times.
+
+Since the result seems linear, the prediction that the running time is linear, O(n), is pretty reasonable.
+
+-----------------------------------------------------------------------
+
+ For the second loop: 
+When N = 1000, it costs 6 time
+When N = 2000, it costs 21 time
+When N = 3000, it costs 49 time
+When N = 4000, it costs 84 time
+When N = 5000, it costs 125 time
+When N = 6000, it costs 176 time
+When N = 7000, it costs 251 time
+When N = 8000, it costs 318 time
+When N = 9000, it costs 400 time
+When N = 10000, it costs 495 time
+
+We can see as N increases t times, the running time also increases t square times (almost):
+From 10000 to 20000, N increases 2 times, and the running time increases from 6 to 21, which is almost 4 times.
+From 20000 to 40000, N increases 2 times, and the running time increases from 21 to 84, which is almost 4 times.
+From 40000 to 80000, N increases 2 times, and the running time increases from 84 to 318, which is almost 4 times.
+
+Since the result seems quadratic, the prediction that the running time is quadratic, O(n^2), is pretty reasonable.
+-----------------------------------------------------------------------
+
+ For the Recursion: 
+When N = 1000, it costs 4547 time
+When N = 10000, it costs 1247 time
+When N = 100000, it costs 1613 time
+When N = 1000000, it costs 1797 time
+When N = 10000000, it costs 2530 time
+
+I asked TA and she said the first one does not matter, so I will start from N = 10000 to discuss.
+I predict the running time for this one is O(log_2(N)).
+
+log2(100000) / log2(10000) = 1.25
+From 10000 to 100000, the running time increases from 1247 to 1613, which equals to 1.29 times, pretty close to 1.25.
+
+log2(1000000) / log2(100000) = 1.2
+From 100000 to 1000000, the running time increases from 1613 to 1797, which equals to 1.11 times, also close to 1.20.
+
+log2(1000000) / log2(100000) = 1.166667
+From 1000000 to 10000000, the running time increases from 1797 to 2530, which equals to 1.40 times. It is not close to the result we expect, but it still in a acceptable range. The reason for that might be the base number is too large or system is unstable at that time.
+
+
+
+
+
+
+
+
+

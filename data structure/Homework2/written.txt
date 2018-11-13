@@ -1,0 +1,237 @@
+Written Part
+--------------------------------------
+Problem 1	
+	public class MyIterator<AnyType>{
+		int index;
+		ArrayList<AnyType> L;
+		ArrayList<AnyType> P;
+
+		public void printLots(AnyType L, int[] P){
+			MyIterator(L, P);
+			while (hasNext()){
+				System.out.println(next());
+			}
+		}
+
+		public MyIterator(ArrayList<AnyType> L, int[] P){
+			this.L = L;
+			this.P = P;
+			index = 0;                      // start pos
+		}
+
+		public boolean hasNextP(){
+			return index < P.size();     // check do we have a next step
+		}
+
+		public AnyType next(){
+			int pos = P[index];
+			if (index >= P.size()){
+				throw new IndexOutOfBoundsException();
+			} else if (pos >= L.length - 1){
+				throw new IndexOutOfBoundsException();
+			}
+			AnyType temp = L[pos];
+			index = index + 1;
+			return temp;
+		}
+	}
+
+--------------------------------------
+Problem 2
+	public list intersection(list A, list B){
+
+		int APos, BPos, FPos, maxIndex;
+
+		if(A_size <= B_size{
+			maxIndex = A_size
+		} else{
+			maxIndex = B_size
+		}
+
+		APos = 0
+		BPos = 0
+		FPos = 0
+
+		while(APos < A_size and BPos < B_size{
+			if (A[APos] < B[BPos]){
+				APos = Apos + 1
+			} else if(A[APos] > B[BPos]){
+				BPos = BPos + 1
+			} else if(A[APos] == B[BPos]){
+				Flist[FPos] = A[APos]
+				FPos = FPos + 1
+				APos = APos + 1
+				BPos = BPos + 1
+			}
+		}
+		Output Flist;
+	}
+--------------------------------------
+Problem 3
+	public class OneArrayTwoStacks{
+		int[] array, size n
+		stack1;
+		stack2;
+        int index1;
+        int index2;
+
+		public void push1(int item){
+			if (index1 < index2){
+				stack1.add(index1, item);
+				index1 = index + 1;
+			}
+			else{
+				System.out.println("Overflow");
+			}                     
+		}
+
+		public void push2(int item){
+			if (index2 < index1){
+				stack2.add(index2, item);
+				index2 = index2 - 1;
+			}
+			else {
+				System.out.println("Overflow");
+			}
+		}
+
+		public int pop1(){
+			if (index1 < index2 && index != 0){
+				index1 = index1 - 1;
+				int temp = stack1.get(index1);
+				stack1.remove(index1);
+				return temp;
+			} else{
+				System.out.println("Overflow");
+				return null;
+			}
+		}
+
+		public int pop2(){
+			if (index2 > index1 && index2 != n - 1){
+				index2 = index2 + 1;
+				int temp = stack1.get(index2);
+				stack2.remove(index2);
+				return temp;
+			} else{
+				System.out.println("Overflow");
+				return null;
+			}
+		}
+
+		public int Peek1(){
+			if (index1 < index2 && index != 0){
+				index1 = index1 - 1;
+				int temp = stack1.get(index1);
+				index1 = index1 + 1;
+				return temp;
+			} else{
+				System.out.println("Overflow");
+				return null;
+			}
+		}
+
+		public int Peek2(){
+			if (index2 > index1 && index2 != n - 1){
+				index2 = index2 + 1;
+				int temp = stack1.get(index2);
+				index2 = index2 - 1;
+				return temp;
+			} else{
+				System.out.println("Overflow");
+				return null;
+			}
+		}
+
+		public boolean isEmpty1(){
+			if (size1() == 0 ){
+				return true;
+			}
+			return false;
+		}
+
+		public boolean isEmpty2(){
+			if (size2() == 0 ){
+				return true;
+			}
+			return false;
+		}
+
+		public int size1(){
+			return index1;
+		}
+
+		public int size2(){
+			return n - 1 - index2;
+		}
+
+--------------------------------------
+Problem 4 
+    (a)
+		Train: [5, 8, 1, 7, 4, 2, 9, 6, 3]       pop from right
+		1) add S3: [3]                               add/pop from right
+           add S2: [6]                               add/pop from right
+           add S1: [9]                               add/pop from right
+
+           Train: [5, 8, 1, 7, 4, 2]
+           S3: [3]                          \
+           S2: [6]                               
+           S1: [9] 
+           Output: []
+
+        2) add S3: [2]
+           add S2: [4]
+           add S1: [7]
+
+           Train: [5, 8, 1]
+           S3: [3, 2]
+           S2: [6, 4]
+           S1: [9, 7]
+           Output: []
+
+        3) out [1] from Train
+
+           Train: [5, 8]
+           S3: [3, 2]
+           S2: [6, 4]
+           S1: [9, 7]
+           Output: [1]                 
+
+        4) out S3:[3, 2]
+
+           Train: [5, 8]
+           S3: []
+           S2: [6, 4]
+           S1: [9, 7]
+           Output: [3, 2, 1]
+
+        5) out [4] from S2
+           add [8] to S3
+
+           Train: [5]
+           S3: [8]
+           S2: [6]
+           S1: [9, 7]
+           Output: [4, 3, 2, 1]
+
+        6) out [5] from Train
+           out [6] from S2
+           out [7] from S1
+
+           Train: []
+           S3: [8]
+           S2: []
+           S1: [9]
+           Output: [7, 6, 5, 4, 3, 2, 1]
+
+        7) out [8] from S3
+           out [9] from S1
+
+           Train: []
+           S3: []
+           S2: []
+           S1: []
+           Output: [9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+
+   (b)  [1, 9, 8, 7, 6, 5, 4, 3, 2]
