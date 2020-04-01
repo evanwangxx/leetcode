@@ -1,5 +1,4 @@
 class Solution:
-
     @staticmethod
     def reverse(x):
         """
@@ -8,7 +7,6 @@ class Solution:
         """
         reverse = 0
         sign = [1, -1][x < 0]
-
         if x < 0:
             x = x * sign
 
@@ -18,10 +16,8 @@ class Solution:
             reverse = reverse * 10 + digit
 
         reverse = reverse * sign
-
         if reverse <= -2**31 or reverse >= 2**31-1:
             return 0
-
         return reverse
 
 

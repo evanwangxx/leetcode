@@ -1,7 +1,7 @@
 # 121. Best Time to Buy and Sell Stock
 
 
-x = [7,6,5,4,3,1,3]
+x = [7,6,5,4,3,1,3,100]
 
 
 def maxProfit(prices):

@@ -7,7 +7,7 @@ Note: "aba" is also a valid answer.
 
 
 class Solution:
-    def longestPalindrome(self, s):
+    def longestPalindrome_old(self, s):
         """
         :type s: str
         :rtype: str
@@ -20,7 +20,6 @@ class Solution:
 
         max_list = []
         for i in range(1, len(s)-1):
-
             left_index = i-1
             right_index = i+1
 
@@ -51,6 +50,31 @@ class Solution:
 
         return ''.join(max_list)
 
+    def longestPalindrome(self, s):
+        if not s:
+            return 0
+        elif len(s) == 1:
+            return 1
+
+        tmp_length = 1
+        max_length = 1
+        for p in range(1, len(s)-1):
+            i = p - 1
+            j = p + 1
+            while i >= 0 and s[i] == s[p]:
+                i -= 1
+                tmp_length += 1
+            while j < len(s) and s[j] == s[p]:
+                j += 1
+                tmp_length += 1
+            while i >= 0 and j < len(s) and s[i] == s[j]:
+                tmp_length += 2
+                i -= 1
+                j += 1
+            max_length = max(max_length, tmp_length)
+            tmp_length = 1
+        return max_length
+
 
 t1 = "222020221"
 t2 = "aaaa"
@@ -59,8 +83,8 @@ t4 = "abba"
 t5 = "asdsa"
 t6 = "abbd"
 
+s = Solution()
 for i in [t1,t2,t3,t4,t5,t6]:
-
-    s = Solution().longestPalindrome(i)
-
-    print(s)
+    str = s.longestPalindrome_old(i)
+    lens = s.longestPalindrome(i)
+    print(len(str), lens)
