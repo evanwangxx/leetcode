@@ -63,5 +63,4 @@ class Solution:
 node_2 = Node(2, Node(4, None, None), Node(5, None, None))
 node_3 = Node(3, Node(6, None, None), Node(7, None, None))
 test_tree = Node(1, node_2, node_3)
-
 Solution().connect(test_tree)

@@ -19,3 +19,25 @@
 
 class Solution:
     def combinationSum(self, candidates, target):
+        if not candidates:
+            return []
+
+        candidates = sorted(candidates)
+        res = []
+        self.backtrace_helper(candidates, [], 0, target, res)
+        return res
+
+    def backtrace_helper(self, candi, path, start_index, target, res):
+        if target == 0:
+            res.append(path[:])
+        else:
+            for i in range(start_index, len(candi)):
+                if candi[i] > target:
+                    break
+                path.append(candi[i])
+                self.backtrace_helper(candi, path, i, target-candi[i], res)
+                path.pop()
+
+
+x = [2,3,6,7]
+print(Solution().combinationSum(x, 7))
